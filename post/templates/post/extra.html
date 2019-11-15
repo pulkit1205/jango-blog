@@ -1,0 +1,60 @@
+ <input type="search" name="q" class="search1" placeholder="Search.." autocomplete="off" value="{{ request.GET.q }}" style="width:30%;height: 40px;border:2px outset grey;border-radius: 8px;box-shadow: 2px 2px 4px #C25100; margin-left: 100px;margin-left: 10px;">
+        <input type="submit" value="Search" class="button3" style="width: 10%">
+
+
+
+<footer class="botfooter" style="
+    padding: 5px;
+    margin-left: 5px;
+    border-top: 3px solid black; 
+    width: 99%;
+    background-color: #C25100;
+    color: white;
+    padding: 5px; 
+    margin: 0;
+    margin-right:  -50; 
+">
+    <div class="row">
+        <div class="col-md-4"> 
+            <p>sdafsgf hmj,mhngd fsdas aSFDFBG NFHM FNGBFsd afsgfhmj,mhn gdfsdasaS FDFBGNFHM FNGBFsda fsg fhmj,mhngdf sdas aSFDF BGNFH MFNGBFsdafsgf hmj,mhngd fsdas aSFDFBG NFHM FNGBFsd afsgfhmj,mhn gdfsdasaS FDFBGNFHM FNGBFsda fsg fhmj,mhngdf sdas aSFDF BGNFH MFNGBF</p>
+            
+        </div>
+       
+        <div class="col-md-4">
+            <p>ssdafsgf hmj,mhngd fsdas aSFDFBG NFHM FNGBFsd afsgfhmj,mhn gdfsdasaS FDFBGNFHM FNGBFsda fsg fhmj,mhngdf sdas aSFDF BGNFH MFNGBFdafsg fhm j,mh ngdfsda saSFDF BGN FHMFN GBFsd afsgf hmj,mh ngdfsd asaSFDF BGNF HMFNG BFsd afsg fhmj ,mhn gdf sdasaS FDFBGN FHMF NGBF</p>
+            
+        </div>
+    
+        <div class="col-md-4">
+            <p>sdsdafsgf hmj,mhngd fsdas aSFDFBG NFHM FNGBFsd afsgfhmj,mhn gdfsdasaS FDFBGNFHM FNGBFsda fsg fhmj,mhngdf sdas aSFDF BGNFH MFNGBFafs gfhmj,mhng dfs dasaSFD FBGNFH MFNGBFsdafsgfhmj ,mhngdfsdas aSFDFBGNFHMFNGBFsdafsg fhmj,mhngdfsda saSFDFBGNFH MFNGBF</p>
+            
+        </div>
+    </div>
+    
+</footer>
+
+
+
+        $(document).on('submit', '.comment-form', function(event){
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            datatype: 'json',
+            success: function(response){
+      
+                $('#main-comment-section').html(response['form'])
+                $('textfield').val('');
+                console.log('success');
+
+            },
+
+            error: function(rs, e){
+                console.log('error');
+                
+            },
+
+            });
+                 
+});

@@ -1,0 +1,26 @@
+{% extends 'post/loginregister.html' %}
+{% load static %}
+
+     {% block content %}
+     <h1>Sign Up Form</h1>
+   <form action="login"  method="POST">
+   {% csrf_token %}
+
+  
+      <div class="form-group">
+      <label for="user" class="fon"> Username: </label><br>
+      <input type="text" name="username"  value="" class="form-control commm" autocomplete="off" placeholder="Eg: Gh12....">
+      <span id="usercheck"> </span>
+      </div>
+
+      <div class="form-group">
+      <label for="password" class="fon"> Password: </label><br>
+      <input type="password" name="pass" id="password" class="form-control commm" autocomplete="off" placeholder="Eg: Abc@12....">
+      <span id="passcheck"> </span>
+      </div>
+   <button type="submit" class="button3" style="width: 120px;font-size: 20px;margin-left: 600px;">Login</button>
+   </form>
+
+ {% include 'post/alerts.html' %}
+   <br><br><br><br><br><br><br>
+{% endblock %}

@@ -1,0 +1,12 @@
+              <form action='{% url "favourite_post" %}', method="post">
+              	{% csrf_token %}
+              {% if is_favourite %}
+
+              <i type="submit" name="post.id", value="{{ post.id }}" class="fa fa-heart fav" style="font-size:25px; color:red; cursor: pointer;" data-toggle="tooltip" title="Click to remove from favourite list!"></i>
+
+                {% else %}
+
+               <i type="submit" name="post.id",  value="{{ post.id }}" data-toggle="tooltip" title="Click to add into favourite list!" class="fa fa-heart-o fav" style="font-size:25px; color:red; cursor: pointer;"></i>
+
+                {% endif %}
+                 </form>

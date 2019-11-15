@@ -1,0 +1,15 @@
+{% extends 'post/loginregister.html' %}
+{% load static %}
+
+        {% block content %}
+<br><br><br><br>
+{% include 'post/alerts.html' %}
+
+        <form action="" method="POST" enctype="multipart/form-data">
+        	{% csrf_token %}
+        	
+        {{ profile_form.as_p }}
+
+        <input type="Submit" value="Save Changes" class="btn btn-success">
+        </form>
+       {% endblock %}        	

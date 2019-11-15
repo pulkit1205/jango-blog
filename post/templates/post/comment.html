@@ -1,0 +1,35 @@
+ <form method="post" action="." class="comment-form" id="form1">
+    {% csrf_token %}
+
+    {{ comment_form.as_p }}
+    
+    <input type="Submit" value="Post" class="button3">
+
+<br><br>
+    {{ comments.count }} Comment{{ comments.count|pluralize }}
+    <br><br><hr>
+{% for comment in comments %}
+    
+    {{ comment.created_date }}
+    {% if user.is_authenticated and user == comment.user %}
+    <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+
+    {% endif %}
+    <blockquote class="blockquote">
+        <p class="mb-0">
+        {% if comment.user.profile.photo %}
+        <img src="/{{ comment.user.profile.photo.url }}" style="height: 50px; width: 50px;">
+        {{ comment.text }}</p>
+        <footer class="blockquote-footer">by:  <cite title="source title">{{ comment.user }}</cite></footer>
+        {% else %}
+        <img src="/static/default/defaul.png" style="height: 50px; width: 50px;">{{ comment.text }}</p>
+        <footer class="blockquote-footer">by:  <cite title="source title">{{ comment.user }}</cite></footer>
+        {% endif %}
+        
+             
+            </blockquote>   
+                
+                
+    
+{% endfor %}
+           

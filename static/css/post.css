@@ -1,0 +1,293 @@
+.page-header{
+  background-color: #C25100;
+  margin-top: 0;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 0;
+}
+
+
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active{
+  color: #ffffff;
+  font-size: 36pt;
+  text-decoration: none;
+}
+
+.content{
+  margin-left: 40px;
+}
+
+h1, h2, h3, h4{
+  font-family: 'Lobster', cursive;
+}
+
+.date{
+  color: #828282;
+}
+
+.save{
+  float: right;
+}
+
+.post-form textarea, .post-form input{
+  width: 100%;
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited{
+  color: #ffffff;
+  float: right;
+  font-size: 26pt;
+  margin-right: 20px;
+}
+
+.post{
+  margin-bottom: 70px;
+}
+
+.post h2 a, .post h2 a:visited{
+  color: #000000;
+}
+
+.register{
+  margin-left: 1000px;
+  border: 3px outset grey;
+  background-color: #f27a02;
+  opacity: 0.8;
+}
+
+.edit{
+  margin-left: 500px;
+  border: 1px outset grey;
+  border-radius: 10px;
+}
+
+.bread{
+  margin-left: 600px;
+  margin-bottom: 0px;
+  width: 500px;
+  padding: 0px;
+  background-color: #C25100;
+  font-size: 30px;
+  color: ;
+  font-family: 'Lobster', cursive;
+}
+
+
+.braeddata{
+  width: 120px;
+  font-color : black;
+  color: #C25100;
+}
+
+.userwidth{
+  width: 200px;
+}
+
+input[type=text], 
+input[type=password]{ 
+  width: 80%; 
+  padding: 12px 20px; 
+  margin: 8px 0; 
+  display: inline-block; 
+  border: 2px solid #ccc; 
+  box-sizing: border-box; 
+} 
+
+button{ 
+  background-color: Green; 
+  color: white; 
+  padding: 15px 20px; 
+  margin: 8px 0; 
+  cursor: pointer; 
+  width: 100%; 
+} 
+
+.cancelbtn{ 
+  padding: 15px 20px; 
+  background-color: #FF2E00; 
+} 
+
+.cancelbtn, 
+.signupbtn{ 
+  float: left; 
+  width: 50%; 
+} 
+
+.container{ 
+  padding: 16px; 
+} 
+
+.clearfix::after{ 
+  content: ""; 
+  clear: both; 
+  display: table; 
+} 
+
+@media screen and (max-width: 300px){ 
+  .cancelbtn, 
+  .signupbtn { 
+  width: 100%; 
+} 
+} 
+
+.search1{
+  width : 10%;
+}
+
+.filterr{
+  color: black;
+  font-size: 90px;
+  font-weight: bold;
+}
+
+.comment{
+  margin: 20px 0px 20px 20px;
+  border: 1px solid black;
+}
+
+.gallery{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.gallery .img-thumbnail{
+  height: 260px;
+  width: 220px;
+}
+
+.commmm{
+  width:200px;
+  height: 200px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 2px 5px #666;
+}
+
+.commm{
+  width: 80%;
+  border: 3px outset #ccc;
+  border-radius: 10px;
+  box-shadow: 2px 5px #666;
+}
+
+.button1{
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  color: #4CAF50;
+  box-shadow: 3px 3px 0px 0px #999;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.button1:hover{
+  color: #3e8e41;
+}
+
+.button1:active{
+  color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.button2{
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  color: #FF0000;
+  box-shadow: 3px 3px 0px 0px  #999;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  user-select: none;
+} 
+
+.button2:hover{
+  color: #B00000;
+}
+
+.button2:active{
+  color: #B00000;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.button3{
+  display: inline-block;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+  width: 85px;
+  height: 40px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: -10px;
+}
+
+.button3:hover{
+  background-color: #3e8e41;
+}
+
+.button3:active{
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.button4{
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+  width: 95px;
+  height: 40px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.button4:hover{
+  background-color: #3e8e41;
+}
+
+.button4:active{
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.footer1{
+  margin-left: -78px;
+  width: 80%;
+  background-color: #C25100;
+  color: white;
+  padding: 10px;
+  padding-left: 15px;
+  border-top: 2px solid black;
+}
+
+.botfooter{
+  border-top: 2px solid black;
+  background-color: #C25100;
+  color: white; 
+}
+
+
+.barr{
+  font-size:48px; 
+  color:red;
+}

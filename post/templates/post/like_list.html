@@ -1,0 +1,27 @@
+{% extends 'post/loginregister.html' %}
+{% load static %}
+
+        {% block content %}
+         
+        
+            {% for post in like_posts %}
+            <hr>
+            <div class="post">
+            <div class="date">
+                <h2><a href="{% url 'post_detail' pk=post.pk %}" data-toggle="tooltip" title="Click to Like and Comment!">{{ post.title }}</a></h2>
+                Published On: {{ post.published_date }}<br>
+                BY: {{ post.author }}
+              
+                
+            </div>
+            <br>
+            <p>{{ post.text|safe|truncatewords:"100" }}
+            <a href="{% url 'post_detail' pk=post.pk %}" data-toggle="tooltip" title="Click to see full post!">read more</a>
+            </p>
+<p>Likes: {{ post.likes.count }}</p>
+
+        </div>
+
+        {% endfor %}
+   
+    {% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'post/loginregister.html' %}
+
+{% block content %}
+
+    <h2>New post</h2>
+    <form method="POST" class="post-form" enctype="multipart/form-data">
+    	{% csrf_token %}
+        {{ form.as_p }}
+        {{ formset.as_table }}
+        <button type="submit" class="save btn btn-success" style="width: 300px;">Save</button>
+    </form>
+    {% for message in messages%}
+   	<h1>{{ message }}</h1>
+   	{% endfor %}
+
+{% endblock %}

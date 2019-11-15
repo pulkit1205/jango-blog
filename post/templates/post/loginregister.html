@@ -1,0 +1,331 @@
+{% load static %}
+<html>
+    <head>
+        <title>Django  blog</title>
+       
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static 'css/post.css' %}">
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+<script type="text/javascript">
+   
+
+  
+    
+$(document).ready(function(event){
+
+
+    $(function(){
+        setTimeout(function(){
+            $('.alert').slideUp(2000);
+        }, 1000);
+    });
+  
+
+
+  $("#form1").hide();
+
+  $("#formButton").click(function() {
+    $("#form1").show();
+    $("#formButton").hide();
+    $("#co").hide();
+
+  });
+
+
+         
+ $("#filt").hide();
+  $("#filte").click(function() {
+    $("#filt").show();
+    $("#filte").click(function() {
+    $("#filt").hide();
+    $("#filte").click(function() {
+    $("#filt").show();
+    $("#filte").click(function() {
+    $("#filt").hide();
+     $("#filte").click(function() {
+    $("#filt").show();
+    $("#filte").click(function() {
+    $("#filt").hide();
+    $("#filte").click(function() {
+    $("#filt").show();
+    $("#filte").click(function() {
+    $("#filt").hide();
+  });
+    });
+    });
+    });
+  });
+    });
+    });
+    });
+
+
+
+    $(document).on('click', '.like',function(event){
+        event.preventDefault();
+
+     
+        var pk= $(this).attr('value');
+
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url "like_post" %}',
+            data: {'id':pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+            success: function(response){
+      
+                $('#like_section').html(response['form'])
+                console.log('success');
+
+            },
+
+            error: function(rs, e){
+                console.log('error');
+                
+            },
+
+            });
+                 
+});
+    $(document).on('click', '.fav', function(event){
+        event.preventDefault();
+
+     
+        var pk= $(this).attr('value');
+
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url "favourite_post" %}',
+            data: {'id':pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+            success: function(response){
+      
+                $('#favourite_section').html(response['form'])
+                console.log('success');
+
+            },
+
+            error: function(rs, e){
+                console.log('error');
+                
+            },
+
+            });
+                 
+}); 
+
+
+      $(document).on('submit', '.comment-form', function(event){
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            datatype: 'json',
+            success: function(response){
+      
+                $('#main-comment-section').html(response['form'])
+                $('#id_text').val('');
+                console.log('success');
+
+            },
+
+            error: function(rs, e){
+                console.log('error');
+                
+            },
+
+            });
+                 
+});
+
+    });
+
+
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]');   
+    });
+</script>
+
+    </head>
+    <body>
+        <div class="page-header" style="
+    margin: 0; margin-top: -20px;
+    ">
+          
+            <nav aria-label="breadcrumb stretch">
+                <h3>
+  <ol class="breadcrumb" style="
+    width: 90%;
+    background-color: #C25100;
+    margin-bottom: 5px;
+    ">
+    
+    <li class="breadcrumb-item braeddata" style="
+    width: 700;font-size:40px;font-family:Helvetica Neue; color:white;">Django Blog</li>
+
+    {% if user.is_authenticated %}
+       
+{% if request.user.profile.photo %}
+
+<li>
+<a href="{% url 'editForm' %}"><img src="/{{ request.user.profile.photo.url }}" alt="hihggghhg" style="height: 50px; width: 50px; " data-toggle="tooltip" title="Click to edit your profile!"></a> Hi,{{user.username}}
+</li>
+{% else %}
+<li>
+<a href="{% url 'editForm' %}"><img src="/static/default/defaul.png" alt="hi" style="height: 50px; width: 50px;" data-toggle="tooltip" title="Click to edit your profile!"></a> Hi,{{user.username}}
+</li>
+{% endif %}
+    <li class="breadcrumb-item braeddata" style="
+    width: 100;font-size:25px;color:white;"><a href="{% url 'logout' %}">Logout</a></li>
+
+    {% else %}
+
+    <li class="breadcrumb-item braeddata" style="
+    width: 100;font-size:25px;color:white;margin-left:50px; "><a href="{% url 'register' %}">Register</a></li>&nbsp;&nbsp;&nbsp;
+    <li class="breadcrumb-item" style="
+    width: 100;font-size:25px; color:white;"><a href="{% url 'login' %}">Login</a></li>
+    {% endif %}
+</ol>
+</h3>  
+</nav>
+{% if user.is_authenticated %}
+<h3>
+
+</h3>
+  {% endif %}
+
+
+
+</div>   
+        <div class="content container">
+    <div class="row">
+        <div class="col-md-9">
+        {% block content %}
+           {% endblock %}
+    </div>
+    
+    <br><br><br><br>
+    
+ 
+{% if user.is_authenticated %}
+    <div class="col-md-1">
+
+<ul class="nav nav-pills flex-column" style=" font-size: 20px; margin-left: 50px; border-left: 1px solid grey;">
+    <li class="nav-item">
+<a href="/"><i class="fa fa-home" data-toggle="tooltip" title="Click to go Home page!" style="font-size:48px;color:red"></a></i>
+  </li>
+<br>
+  <li class="nav-item">
+<a href="{% url 'editForm' %}"><i class="fa fa-user-circle" data-toggle="tooltip" title="Click to edit your profile!" style="font-size:48px;color:red"></a></i>
+  </li>
+<br>
+  <li class="nav-item">
+    <a href="{% url 'post_new' %}"><i class="fa fa-plus"  data-toggle="tooltip" title="Click to add new post!"style="font-size:48px;color:red; margin-left:6px;"></a></i>
+  </li>
+  <br>
+  <li><a>
+  <i class="fa fa-filter dropdown-toggle"  id="filte" style="font-size:48px; color:red; cursor: pointer;" type="button" data-toggle="tooltip" title="Click to filter the post!"></a></i>
+          <div id="filt" style="margin-left: 5px;">
+    <a href="{% url 'filter' %}" class="btn" data-toggle="tooltip" title="Click to see your post!">ME</a><br>
+    <a href="{% url 'other' %}" data-toggle="tooltip" class="btn" title="Click to see other post!">OTHER</a><br>
+    <a href="{% url 'home' %}" data-toggle="tooltip" class="btn" title="Click to see all post!">ALL</a><br>
+</div>
+ </li>
+ <br>
+  <li class="nav-item">
+   <a href="{% url 'favourite_post_list' %}"><i class="fa fa-heart" data-toggle="tooltip" title="Click to see favourite post list!" style=" font-size:48px;color:red"></a></i>
+  </li>
+  <br>
+    <li class="nav-item">
+   <a href="{% url 'like_post_list' %}"><i class="fa fa-thumbs-up" data-toggle="tooltip" title="Click to see liked post list!" style=" font-size:48px;color:red"></a></i>
+  </li>
+  
+  
+</ul>
+</div>
+{% endif %}
+</div>
+</div>
+
+<div>
+{% if user.is_authenticated %}
+<ul class="pagination pagination-lg" style="margin-left: 300px; margin-bottom: 50px; margin-top:0;">
+    {% if posts.has_previous %}
+    <li class="list-item">
+        <a href="?page={{ posts.previous_page_number }}" class="page_link">&laquo;</a>
+    </li>
+    {% endif %}
+
+{% for p in posts.paginator.page_range %}
+{% if posts.number == p %}
+<li class="list-item active">
+<a href="?page={{ p }}" class="page_link">{{ p }}</a>
+    </li>
+    {% else %}
+    <li class="list-item">
+<a href="?page={{ p }}" class="page_link">{{ p }}</a>
+    </li>
+{% endif %}
+{% endfor %}
+ {% if posts.has_next %}
+    <li class="list-item">
+        <a href="?page={{ posts.next_page_number }}" class="page_link">&raquo;</a>
+    </li>
+    {% endif %}
+
+</ul>
+{% endif %}
+</div>
+
+
+<div>
+
+</div>
+<hr>
+<footer  style="
+   
+   
+    border-top: 3px solid black; 
+    width: 99%;
+    background-color: #C25100;
+    color: white;
+    margin-right: 0;
+    margin-left: 3px !important;
+    padding: 5px; 
+
+        margin: 0;">
+    <div class="row">
+        <div class="col-md-4"> 
+            <p>sdafsgf hmj,mhngd fsdas aSFDFBG NFHM FNGBFsd afsgfhmj,mhn gdfsdasaS FDFBGNFHM FNGBFsda fsg fhmj,mhngdf sdas aSFDF BGNFH MFNGBFsdafsgf hmj,mhngd fsdas aSFDFBG NFHM FNGBFsd afsgfhmj,mhn gdfsdasaS FDFBGNFHM FNGBFsda fsg fhmj,mhngdf sdas aSFDF BGNFH MFNGBF</p>
+            
+        </div>
+       
+        <div class="col-md-4">
+            <p>ssdafsgf hmj,mhngd fsdas aSFDFBG NFHM FNGBFsd afsgfhmj,mhn gdfsdasaS FDFBGNFHM FNGBFsda fsg fhmj,mhngdf sdas aSFDF BGNFH MFNGBFdafsg fhm j,mh ngdfsda saSFDF BGN FHMFN GBFsd afsgf hmj,mh ngdfsd asaSFDF BGNF HMFNG BFsd afsg fhmj ,mhn gdf sdasaS FDFBGN FHMF NGBF</p>
+            
+        </div>
+    
+        <div class="col-md-4">
+            <p>sdsdafsgf hmj,mhngd fsdas aSFDFBG NFHM FNGBFsd afsgfhmj,mhn gdfsdasaS FDFBGNFHM FNGBFsda fsg fhmj,mhngdf sdas aSFDF BGNFH MFNGBFafs gfhmj,mhng dfs dasaSFD FBGNFH MFNGBFsdafsgfhmj ,mhngdfsdas aSFDFBGNFHMFNGBFsdafsg fhmj,mhngdfsda saSFDFBGNFH MFNGBF</p>
+            
+        </div>
+    </div>
+    
+</footer>
+    </body>
+
+</html>

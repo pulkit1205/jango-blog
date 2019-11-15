@@ -1,0 +1,21 @@
+       
+{% if user == post.author %}
+{% else %}
+       {% if user.is_authenticated %}
+        <form action='{% url "like_post" %}', method="post">
+            {% csrf_token %}
+            {{ total_likes }} Like{{ total_likes|pluralize }}&nbsp;&nbsp;&nbsp;&nbsp;
+            {% if is_liked %}
+        <i type="submit"  name="post.id",  value="{{ post.id }}" class="like fa fa-thumbs-down button2"
+        style="font-size: 55px;" data-toggle="tooltip" title="Click to dislike the post!"></i>
+
+            {% else %}
+
+        <i type="submit"  name="post.id",  value="{{ post.id }}" data-toggle="tooltip" title="Click to like the post!" class="fa fa-thumbs-up like button1"
+        style="font-size: 55px;"></i>
+
+            {% endif %}
+        
+        </form>
+        {% endif %}
+        {% endif %}
