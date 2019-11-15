@@ -20,6 +20,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 def home(request):
 	post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+	is_liked = False
 	paginator = Paginator(post_list, 2)
 	page = request.GET.get('page')
 	try:
@@ -160,7 +161,7 @@ def like_post_list(request):
 
 
 def like_post(request):
-  post = get_object_or_404(Post, id = request.POST.get('id'))
+  post = get_object_or_404(Post, pk = request.POST.get('id'))
   is_liked = False
   if request.is_ajax():
 	  if post.likes.filter(id=request.user.id).exists():
@@ -212,13 +213,14 @@ def post_detail(request, pk):
 	return render(request, 'post/post_detail.html', context)
 		
 
-def read_more(request, pk):
-	post = get_object_or_404(Post, pk=pk)
-	context = {
-	'post': post,  
-	}
-	return render(request, 'post/read_more.html', context )	
-
+def read_more(request):
+	post = get_object_or_404(Post, id = request.POST.get('id'))
+	if request.is_ajax():
+		context = {
+		'post': post,  
+		}
+		html = render_to_string('post/read_more.html', context, request)
+		return JsonResponse({'form': html})
 
 
 @login_required(login_url='/login/')

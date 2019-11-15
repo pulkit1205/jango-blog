@@ -27,8 +27,11 @@
            
            <br>
             <p>{{ post.text|safe|truncatewords:"100" }}
-            <a href="{% url 'read_more' pk=post.pk %}" data-toggle="tooltip" title="Click to see full post!">read more</a>
+            <a href="{% url 'post_detail' pk=post.pk %}" data-toggle="tooltip" title="Click to see full post!">read more</a>
             </p>
+        <div id="like_section">
+        {% include 'post/like_section.html' %}
+      </div>
            <p>Likes: {{ post.likes.count }}</p>
 
             </div>

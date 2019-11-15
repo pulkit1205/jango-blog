@@ -149,6 +149,10 @@ $(document).ready(function(event){
                  
 });
 
+
+
+
+
     });
 
 
@@ -236,15 +240,6 @@ $(document).ready(function(event){
   <li class="nav-item">
     <a href="{% url 'post_new' %}"><i class="fa fa-plus"  data-toggle="tooltip" title="Click to add new post!"style="font-size:48px;color:red; margin-left:6px;"></a></i>
   </li>
-  <br>
-  <li><a>
-  <i class="fa fa-filter dropdown-toggle"  id="filte" style="font-size:48px; color:red; cursor: pointer;" type="button" data-toggle="tooltip" title="Click to filter the post!"></a></i>
-          <div id="filt" style="margin-left: 5px;">
-    <a href="{% url 'filter' %}" class="btn" data-toggle="tooltip" title="Click to see your post!">ME</a><br>
-    <a href="{% url 'other' %}" data-toggle="tooltip" class="btn" title="Click to see other post!">OTHER</a><br>
-    <a href="{% url 'home' %}" data-toggle="tooltip" class="btn" title="Click to see all post!">ALL</a><br>
-</div>
- </li>
  <br>
   <li class="nav-item">
    <a href="{% url 'favourite_post_list' %}"><i class="fa fa-heart" data-toggle="tooltip" title="Click to see favourite post list!" style=" font-size:48px;color:red"></a></i>
@@ -253,7 +248,15 @@ $(document).ready(function(event){
     <li class="nav-item">
    <a href="{% url 'like_post_list' %}"><i class="fa fa-thumbs-up" data-toggle="tooltip" title="Click to see liked post list!" style=" font-size:48px;color:red"></a></i>
   </li>
-  
+   <br>
+  <li><a>
+  <i class="fa fa-filter dropdown-toggle"  id="filte" style="font-size:48px; color:red; cursor: pointer;" type="button" data-toggle="tooltip" title="Click to filter the post!"></a></i>
+          <div id="filt" style="margin-left: 5px;">
+    <a href="{% url 'filter' %}" class="btn" data-toggle="tooltip" title="Click to see your post!">ME</a><br>
+    <a href="{% url 'other' %}" data-toggle="tooltip" class="btn" title="Click to see other post!">OTHER</a><br>
+    <a href="{% url 'home' %}" data-toggle="tooltip" class="btn" title="Click to see all post!">ALL</a><br>
+</div>
+ </li>
   
 </ul>
 </div>

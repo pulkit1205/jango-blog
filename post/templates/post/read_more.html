@@ -1,60 +1,15 @@
-{% extends 'post/loginregister.html' %}
-
-{% block content %}
-{% include 'post/alerts.html' %}
-    <div class="post">
-        {% if post.published_date %}
-        <h2>{{ post.title }}</h2>
-            <div class="date">
-               Published On: {{ post.published_date }}
-                BY: {{ post.author }}
-           
-        {% if user.is_authenticated and user == post.author %}
-                <a class="btn btn-default edit" style="margin-left: 400;" href="{% url 'post_edit' pk=post.pk %}" data-toggle="tooltip" title="Click to edit the post!"><span class="glyphicon glyphicon-pencil">
-                    
-                </span></a>
-                <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}" data-toggle="tooltip" title="Click to remove the post!"><span class="glyphicon glyphicon-remove"></span></a>
-                {% endif %}
-                 <a class="btn" style="height: 30px; width: 50px; padding-top: 3px; padding-left: 0px;"><span id="favourite_section">
-                     {% include 'post/favourite.html' %}
-                 </span></a>
-          </div>
-            
-        {% endif %}
-
-     
-        <p>{{ post.text }}</p>
-
-
-        <div class="row gallery">
-            {% for p in post.images_set.all %}
-            <div class="col-md-3">
-               
-                <img src="/{{ p.image.url }}" alt='Not Found' class="img-thumbnail">
-            </div>
-            {% endfor %}
-        </div>
-        </div>
+<div class="post" id="full">
+{% if post.published_date %}
+<div class="date">
+</div>
+{% endif %}
+<p>{{ post.text }}</p>
+<div class="row gallery">
+{% for p in post.images_set.all %}
+<div class="col-md-3">
+<img src="/{{ p.image.url }}" alt='Not Found' class="img-thumbnail">
+</div>
+{% endfor %}
+</div>
+</div>
        
-       <div id="like_section">
-        {% include 'post/like_section.html' %}
-    </div>
-        <br>
-         
-<hr>
-           
-       <div id="co">{{ comments.count }} Comment{{ comments.count|pluralize }}</div>
- <button value="Press To comment" name="Press To comment" id="formButton" class="button4" style="width: 200px;">Press To comment</button>
-       <div class="container">
-       <div class="row">
- <div class="col-md-8">
-
-<div id="main-comment-section">
-  {% include 'post/comment.html' %}
-</div>
-
-
-</div>
-</div>
-</div>
-{% endblock %}
